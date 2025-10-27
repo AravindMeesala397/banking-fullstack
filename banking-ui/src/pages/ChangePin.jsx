@@ -1,14 +1,26 @@
 import React, { useState } from 'react'
 import api from '../api/axios'
+import useAuth from '../context/AuthContext'
 
 export default function ChangePin() {
   const [oldPin, setOld] = useState('')
   const [newPin, setNew] = useState('')
   const [msg, setMsg] = useState('')
+  const { logout } = useAuth()
 
   async function handleSubmit(e) {
     e.preventDefault()
-    setMsg('Feature not implemented yet in backend')
+    setMsg('')
+    try {
+      await api.post('/accounts/me/change-pin', {
+        oldPin,
+        newPin,
+      })
+      setMsg('PIN changed successfully. Please log in again.')
+      setTimeout(() => logout(), 1500)
+    } catch (err) {
+      setMsg(err.response?.data?.error || 'Change PIN failed')
+    }
   }
 
   return (
@@ -16,7 +28,7 @@ export default function ChangePin() {
       onSubmit={handleSubmit}
       className="bg-white border p-4 rounded-xl max-w-md"
     >
-      <h2 className="font-semibold mb-2">Change PIN</h2>
+      <h2 className="font-semibold mb-3">Change PIN</h2>
       <input
         type="password"
         value={oldPin}

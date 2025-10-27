@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
+import useAuth from '../context/AuthContext'
+
 
 export default function Navbar() {
   const { user, logout } = useAuth()
