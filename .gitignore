@@ -23,3 +23,7 @@ dist/
 .env.local
 .env.development
 .env.production
+# Sensitive Spring Boot configs
+banking-api/src/main/resources/application.properties
+banking-api/src/main/resources/application.yml
+
