@@ -1,0 +1,25 @@
+# Ignore IDE files
+.idea/
+.vscode/
+*.iml
+
+# Ignore build outputs
+target/
+build/
+out/
+
+# Ignore environment and config files
+src/main/resources/application.properties
+src/main/resources/application.yml
+.env
+
+# Ignore system and OS files
+.DS_Store
+Thumbs.db
+
+# Node front-end (if banking-ui is inside)
+node_modules/
+dist/
+.env.local
+.env.development
+.env.production
